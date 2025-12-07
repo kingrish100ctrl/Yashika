@@ -117,19 +117,10 @@
             color: var(--text-muted);
             margin-bottom: 2rem;
             max-width: 90%;
-            font-family: var(--font-body); /* DM Sans */
         }
 
-        /* Beautiful text styling for quote pages - KEPT FOR REFERENCE, BUT NOT USED ON PAGE 2/3 NOW */
-        .quote-text {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            font-weight: 500;
-            font-style: italic;
-            color: var(--text-main);
-            line-height: 1.4;
-        }
-
+        /* Removed .quote-text style as requested by user */
+        
         .highlight { color: var(--gold); font-style: italic; }
 
         /* --- BUTTONS --- */
@@ -240,7 +231,7 @@
             text-align: left;
             border-radius: 2px;
             /* Subtle texture effect */
-            background-image: linear-gradient(var(--paper-color) 0%, var(--paper-color) 100%), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmOWYwIi8+CjxwYXRoIGQ9Ik0xIDNoMnYxSDF6IiBmaWxsPSIjZjRmMGU2IiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+');
+            background-image: linear-gradient(var(--paper-color) 0%, var(--paper-color) 100%), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmOWYwIi8+CjxwYXRoIGQ9M00xIDNoMnYxSDF6IiBmaWxsPSIjZjRmMGU2IiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+');
         }
         
         .letter-content {
@@ -297,7 +288,7 @@
         @media (max-width: 480px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 1.8rem; }
-            .quote-text { font-size: 1.6rem; }
+            /* quote-text removal means this no longer applies: .quote-text { font-size: 1.6rem; } */
             p { font-size: 1rem; }
             .container { padding: 1.5rem; }
             
@@ -314,7 +305,7 @@
 <body>
 
     <!-- AUDIO PLAYER (Hidden) -->
-    <!-- Path updated to ./song.mp3 for reliable loading from the same directory -->
+    <!-- Path updated to relative path to ensure file loading from GitHub -->
     <audio id="bg-music" loop>
         <source src="./song.mp3" type="audio/mp3">
     </audio>
@@ -333,22 +324,20 @@
             <button class="btn" onclick="startExperience()">Enter the Experience</button>
         </section>
 
-        <!-- PAGE 2: INVITATION (STANDARD P TAG - Font Reverted) -->
+        <!-- PAGE 2: WISH 1 (Changed from quote-text to h2, quotes removed) -->
         <section id="page-2">
-            <!-- Changed from div.quote-text to standard p tag and removed quotes -->
-            <p>
+            <h2 style="margin-bottom: 30px;">
                 The world is a better place simply because you are here.
-            </p>
+            </h2>
             <div style="font-size: 2rem; color: var(--gold); margin-top: 30px;">✨</div>
             <button class="btn" style="margin-top: 40px;" onclick="nextSection(2)">Next</button>
         </section>
 
-        <!-- PAGE 3: WARMTH (STANDARD P TAG - Font Reverted) -->
+        <!-- PAGE 3: WISH 2 (Changed from quote-text to h2, quotes removed) -->
         <section id="page-3">
-            <!-- Changed from div.quote-text to standard p tag and removed quotes -->
-            <p>
+            <h2 style="margin-bottom: 30px;">
                 Your presence brings warmth, and your company helps people become better versions of themselves.
-            </p>
+            </h2>
             <button class="btn" style="margin-top: 40px;" onclick="nextSection(3)">Next</button>
         </section>
 
@@ -369,8 +358,8 @@
 
         <!-- PAGE 6: COUNTDOWN -->
         <section id="page-6" style="background: linear-gradient(to bottom, #1a1a2e, #16213e); color: white;">
-            <!-- Overriding style for this specific page for contrast -->
-            <h2 style="color: #fff; opacity: 0.9;">The Journey (सफ़र)</h2>
+            <!-- Removed (सफ़र) -->
+            <h2 style="color: #fff; opacity: 0.9;">The Journey</h2>
             <p style="color: #ccc; max-width: 500px;">It was 13 May 2024, at 7 PM, when we first exchanged words... and that small moment brought us all the way here.</p>
             
             <div class="countdown-timer">
@@ -410,7 +399,8 @@
 
         <!-- PAGE 8: GIFT INTRO -->
         <section id="page-8">
-            <h2>A Special Gift (एक खास तोहफ़ा)</h2>
+            <!-- Removed (एक खास तोहफ़ा) -->
+            <h2>A Special Gift</h2>
             <p>I have a special gift for you... but to unlock it, you need to type the magic words.</p>
             <button class="btn" onclick="nextSection(8)">Unlock Gift</button>
         </section>
@@ -419,7 +409,8 @@
         <section id="page-9">
             <h3 style="font-weight: 400; margin-bottom: 5px;">Type exactly:</h3>
             <p class="highlight" style="font-size: 1rem; margin-bottom: 25px;">"I love you Rishi as a friend"</p>
-            <input type="text" id="magic-input" placeholder="यहां लिखें..." autocomplete="off">
+            <!-- Changed placeholder to English -->
+            <input type="text" id="magic-input" placeholder="Type here..." autocomplete="off">
             <button class="btn" onclick="checkInput()">Submit</button>
         </section>
 
@@ -434,6 +425,7 @@
             <h1>I am your gift, Yashika.</h1>
             <h3 style="margin-top: -10px;">Come and unwrap me.</h3>
             <br><br>
+            <!-- This line remains untouched, as requested -->
             <p style="font-size: 0.9rem;">😂😁😁<br>Dekho, main ab bachcho wale mazak nahi karta.</p>
             <button class="btn" onclick="nextSection(11)">Next</button>
         </section>
