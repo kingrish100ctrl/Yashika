@@ -117,9 +117,10 @@
             color: var(--text-muted);
             margin-bottom: 2rem;
             max-width: 90%;
+            font-family: var(--font-body); /* DM Sans */
         }
 
-        /* Beautiful text styling for quote pages */
+        /* Beautiful text styling for quote pages - KEPT FOR REFERENCE, BUT NOT USED ON PAGE 2/3 NOW */
         .quote-text {
             font-family: var(--font-heading);
             font-size: 2rem;
@@ -313,9 +314,9 @@
 <body>
 
     <!-- AUDIO PLAYER (Hidden) -->
-    <!-- Ensure 'song.mp3' is in the same folder as this file -->
+    <!-- Path updated to ./song.mp3 for reliable loading from the same directory -->
     <audio id="bg-music" loop>
-        <source src="song.mp3" type="audio/mp3">
+        <source src="./song.mp3" type="audio/mp3">
     </audio>
 
     <!-- Background Canvas for Particles -->
@@ -332,20 +333,22 @@
             <button class="btn" onclick="startExperience()">Enter the Experience</button>
         </section>
 
-        <!-- PAGE 2: INVITATION (No Heading) -->
+        <!-- PAGE 2: INVITATION (STANDARD P TAG - Font Reverted) -->
         <section id="page-2">
-            <div class="quote-text">
-                "The world is a better place simply because you are here."
-            </div>
+            <!-- Changed from div.quote-text to standard p tag and removed quotes -->
+            <p>
+                The world is a better place simply because you are here.
+            </p>
             <div style="font-size: 2rem; color: var(--gold); margin-top: 30px;">✨</div>
             <button class="btn" style="margin-top: 40px;" onclick="nextSection(2)">Next</button>
         </section>
 
-        <!-- PAGE 3: WARMTH (No Heading) -->
+        <!-- PAGE 3: WARMTH (STANDARD P TAG - Font Reverted) -->
         <section id="page-3">
-            <div class="quote-text">
-                "Your presence brings warmth, and your company helps people become better versions of themselves."
-            </div>
+            <!-- Changed from div.quote-text to standard p tag and removed quotes -->
+            <p>
+                Your presence brings warmth, and your company helps people become better versions of themselves.
+            </p>
             <button class="btn" style="margin-top: 40px;" onclick="nextSection(3)">Next</button>
         </section>
 
@@ -367,7 +370,7 @@
         <!-- PAGE 6: COUNTDOWN -->
         <section id="page-6" style="background: linear-gradient(to bottom, #1a1a2e, #16213e); color: white;">
             <!-- Overriding style for this specific page for contrast -->
-            <h2 style="color: #fff; opacity: 0.9;">The Journey</h2>
+            <h2 style="color: #fff; opacity: 0.9;">The Journey (सफ़र)</h2>
             <p style="color: #ccc; max-width: 500px;">It was 13 May 2024, at 7 PM, when we first exchanged words... and that small moment brought us all the way here.</p>
             
             <div class="countdown-timer">
@@ -407,7 +410,7 @@
 
         <!-- PAGE 8: GIFT INTRO -->
         <section id="page-8">
-            <h2>A Special Gift</h2>
+            <h2>A Special Gift (एक खास तोहफ़ा)</h2>
             <p>I have a special gift for you... but to unlock it, you need to type the magic words.</p>
             <button class="btn" onclick="nextSection(8)">Unlock Gift</button>
         </section>
@@ -416,7 +419,7 @@
         <section id="page-9">
             <h3 style="font-weight: 400; margin-bottom: 5px;">Type exactly:</h3>
             <p class="highlight" style="font-size: 1rem; margin-bottom: 25px;">"I love you Rishi as a friend"</p>
-            <input type="text" id="magic-input" placeholder="Type here..." autocomplete="off">
+            <input type="text" id="magic-input" placeholder="यहां लिखें..." autocomplete="off">
             <button class="btn" onclick="checkInput()">Submit</button>
         </section>
 
@@ -501,8 +504,11 @@
             // Play Music
             const audio = document.getElementById('bg-music');
             audio.volume = 0.3; // 30% Volume
+            
+            // NOTE: .play() needs to be triggered by user interaction.
+            // Since the user is clicking "Enter the Experience", this should work.
             audio.play().catch(error => {
-                console.log("Audio play failed (browser policy). Interaction required.");
+                console.log("Audio play failed, showing prompt if supported.");
             });
             
             // Go to next section
